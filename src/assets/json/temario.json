@@ -1,67 +1,86 @@
 {
-  "tituloGeneral": "Curso DEMO",
-  "descripcion": "Esto es un curso Demo para probar la app Temar.io. ",
-  "img": "img/logo-250x200.png",
+  "tituloGeneral": "",
+  "descripcion": "🗄️ En este curso aprenderás a trabajar con SQLite de forma práctica, creando un pequeño servidor de desarrollo sobre Debian.\n\n🖥️ Instalaremos y configuraremos PocketBase para disponer de una base de datos SQLite, autenticación de usuarios y una API REST lista para utilizar desde nuestras aplicaciones.",
+  "img": "img/logo-pocketbase.png",
   "mostrarBloquesEnMenu": false,
   "bloques": [
     {
-      "id": "troncal",
+      "id": "esencial",
       "orden": 1,
-      "titulo": "Troncal",
+      "titulo": "Esencial",
       "mostrarTitulo": true,
-      "descripcion": "Parte troncal del temario DEMO",
+      "descripcion": "",
       "img": "",
-      "emoji": "🪵",
+      "emoji": "🟢",
       "icon": "pi pi-box",
-      "color": "",
+      "color": "#00600080",
       "expandible": true,
       "contraido": false,
       "habilitado": true,
       "temas": [
         {
-          "id": "demo-1",
+          "id": "intro",
           "orden": 1,
-          "titulo": "Demo de contenido con imagen",
-          "descripcion": "Demo con todas las posibles combinaciones de elementos en markdown",
-          "archivoMd": "demo.md",
-          "img": "img/01 - word/logo-word.png",
-          "emoji": "🎨",
-          "icon": "pi pi-android",
-          "severity": "primary",
-          "outlined": false,
-          "habilitado": true
-        },
-        {
-          "id": "demo-2",
-          "orden": 2,
-          "titulo": "Demo de contenido con emoji",
-          "descripcion": "Demo con todas las posibles combinaciones de elementos en markdown",
-          "archivoMd": "demo.md",
-          "icon": "pi pi-android",
-          "emoji": "🎨",
-          "img": "",
-          "severity": "primary",
-          "outlined": false,
-          "habilitado": true
-        },
-        {
-          "id": "demo-3",
-          "orden": 3,
-          "titulo": "Demo de contenido con icono (sin img ni emoji)",
-          "descripcion": "Demo con todas las posibles combinaciones de elementos en markdown",
-          "archivoMd": "demo.md",
+          "titulo": "Introducción",
+          "descripcion": "Pequeña introducción del curso donde se ven los objetivos del mismo",
+          "archivoMd": "00-intro.md",
           "img": "",
           "emoji": "",
-          "icon": "pi pi-android",
-          "severity": "primary",
+          "icon": "pi pi-angle-right",
+          "severity": "success",
+          "outlined": false,
+          "habilitado": true
+        },
+        {
+          "id": "servidor",
+          "orden": 2,
+          "titulo": "Servidor de desarrollo",
+          "descripcion": "Crearemos un servidor de desarrollo en Debian usando Virtual Box, con el objetivo de dejarlo preparado para instalar Pocket Base",
+          "archivoMd": "01-servidor.md",
+          "img": "",
+          "emoji": "",
+          "icon": "pi pi-angle-right",
+          "severity": "success",
           "outlined": false,
           "habilitado": true
         }
+              
       ]
     },
     {
-      "id": "pildoras",
+      "id": "avanzado",
       "orden": 2,
+      "titulo": "Avanzado",
+      "mostrarTitulo": true,
+      "descripcion": "",
+      "img": "",
+      "emoji": "🟠",
+      "icon": "pi pi-box",
+      "color": "#ff492950",
+      "expandible": true,
+      "contraido": true,
+      "habilitado": false,
+      "temas": [
+        {
+          "id": "intro-1",
+          "orden": 1,
+          "titulo": "Introducción",
+          "descripcion": "Pequeña introducción del curso donde se ven los objetivos del mismo",
+          "archivoMd": "00-intro.md",
+          "img": "",
+          "emoji": "",
+          "icon": "pi pi-angle-right",
+          "severity": "warn",
+          "outlined": false,
+          "habilitado": false
+        }
+              
+      ]
+    },
+    
+    {
+      "id": "pildoras",
+      "orden": 3,
       "titulo": "Píldoras",
       "mostrarTitulo": true,
       "descripcion": "Las píldoras de información son secciones breves y concisas que complementan la parte troncal del curso. Aquí encontrarás temas específicos y avanzados que no se abordan en profundidad en el temario troncal.",
@@ -71,7 +90,7 @@
       "img": "",
       "expandible": true,
       "contraido": true,
-      "habilitado": true,
+      "habilitado": false,
       "temas": [
         {
           "id": "ia",
@@ -79,12 +98,12 @@
           "titulo": "Inteligencia Artificial (sin TOC)",
           "descripcion": "Descripción del tema de IA",
           "archivoMd": "ia.md",
-          "icon": "pi pi-android",
+          "icon": "pi pi-angle-right",
           "emoji": "🧠",
           "img": "",
           "severity": "primary",
-          "outlined": true,
-          "habilitado": true
+          "outlined": false,
+          "habilitado": false
         },
         {
           "id": "teams",
@@ -92,12 +111,12 @@
           "titulo": "Microsoft Teams",
           "descripcion": "Descripción del tema de Teams",
           "archivoMd": "teams.md",
-          "icon": "pi pi-android",
+          "icon": "pi pi-angle-right",
           "emoji": "👥",
           "img": "",
           "severity": "primary",
-          "outlined": true,
-          "habilitado": true
+          "outlined": false,
+          "habilitado": false
         }
       ]
     }

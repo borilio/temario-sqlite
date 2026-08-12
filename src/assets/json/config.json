@@ -1,35 +1,32 @@
 {
-    "preset": "MiPresetSky",
-    "defaultThemeId": "typora",
+    "preset": "MiPresetNoir",
+    "defaultThemeId": "github-dark",
     "mostrarLigadurasFuentes": true,
     "devMode": true,
     "data": {
-        "copyright": "Aquí se puede poner un texto adicional que se mostrará en el componente 'Acerca de'. Se configura en el config.json > data > copyright. Si no quieres que se muestre, déjalo en blanco.",
+        "copyright": "",
         "logos": [
             {
-                "img": "img/logo1.png",
-                "link": "http://www.enlace1.com",
-                "alt": "Logo1"
-            },
-            {
-                "img": "img/logo2.png",
-                "link": "http://www.enlace2.com",
+                "img": "img/logo-completo.png",
+                "link": "",
                 "alt": "Logo2"
-            },
-            {
-                "img": "img/logo3.png",
-                "link": "http://www.enlace3.com",
-                "alt": "Logo3"
             }
         ]
     },
     "themes": [
         {
             "id": "github-light",
-            "name": "GitHub Claro",
+            "name": "Claro",
             "baseMode": "light",
             "markdownThemeFile": "github-markdown-light.css",
             "highlightThemeFile": "github.css"
+        },
+        {
+            "id": "typora",
+            "name": "Oscuro",
+            "baseMode": "dark",
+            "markdownThemeFile": "github-markdown-darky.css",
+            "highlightThemeFile": "base16/dracula.css"
         },
         {
             "id": "github-dark",
@@ -37,13 +34,6 @@
             "baseMode": "dark",
             "markdownThemeFile": "github-markdown-dark.css",
             "highlightThemeFile": "github-dark.css"
-        },
-        {
-            "id": "typora",
-            "name": "Typora",
-            "baseMode": "dark",
-            "markdownThemeFile": "github-markdown-darky.css",
-            "highlightThemeFile": "base16/dracula.css"
         }
     ],
     "enlacesExternos": {

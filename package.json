@@ -1,8 +1,8 @@
 {
   "name": "Temar.io",
-  "version": "0.2.0b",
-  "codename": "thanelosio",
-  "date": "2026-05-25",
+  "version": "0.2.1",
+  "codename": "eclipse",
+  "date": "2026-08-12",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open --host 0.0.0.0",
