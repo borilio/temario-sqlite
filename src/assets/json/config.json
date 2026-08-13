@@ -22,6 +22,13 @@
             "highlightThemeFile": "github.css"
         },
         {
+            "id": "github-sepia",
+            "name": "Sepia",
+            "baseMode": "light",
+            "markdownThemeFile": "github-markdown-sepia.css",
+            "highlightThemeFile": "github.css"
+        },
+        {
             "id": "typora",
             "name": "Oscuro",
             "baseMode": "dark",
@@ -34,7 +41,29 @@
             "baseMode": "dark",
             "markdownThemeFile": "github-markdown-dark.css",
             "highlightThemeFile": "github-dark.css"
+        },
+        {
+            "id": "cervantes",
+            "name": "Cervantes",
+            "baseMode": "dark",
+            "markdownThemeFile": "cervantes.css",
+            "highlightThemeFile": "base16/dracula.css"
+        },
+        {
+            "id": "retro",
+            "name": "Retro Gaming",
+            "baseMode": "dark",
+            "markdownThemeFile": "retro-gaming.css",
+            "highlightThemeFile": "monokai.css"
+        },
+        {
+            "id": "hud",
+            "name": "HUD",
+            "baseMode": "dark",
+            "markdownThemeFile": "hud.css",
+            "highlightThemeFile": "monokai.css"
         }
+
     ],
     "enlacesExternos": {
         "texto": "Aquí se mostrarán todos los enlaces externos que usaremos durante el curso, tales como ejercicios, calendarios, plataforma educativa, plataforma de mensajería, etc.",

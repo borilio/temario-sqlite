@@ -64,15 +64,15 @@
         {
           "id": "intro-1",
           "orden": 1,
-          "titulo": "Introducción",
+          "titulo": "Demo",
           "descripcion": "Pequeña introducción del curso donde se ven los objetivos del mismo",
-          "archivoMd": "00-intro.md",
+          "archivoMd": "demo.md",
           "img": "",
           "emoji": "",
           "icon": "pi pi-angle-right",
           "severity": "warn",
           "outlined": false,
-          "habilitado": false
+          "habilitado": true
         }
               
       ]
