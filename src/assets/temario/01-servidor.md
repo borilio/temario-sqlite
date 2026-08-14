@@ -4,7 +4,9 @@
 
 # Introducción
 
-Nuestro objetivo en este apartado, será tener una máquina virtual con Debian mínimo (solo consola, sin entorno gráfico), actualizada y con un par de utilidades básicas instaladas. A partir de aquí trabajaremos siempre desde la consola de la propia VM o bien, conectados por SSH desde Windows para mayor comodidad (poder copiar y pegar comandos, tamaño de la ventana, textos, etc.).
+![El micho está montando un servidor en debian](img/01-servidor/image-20260814151642419.png){.rounded}
+
+Nuestro objetivo en este apartado, será **montar una máquina virtual con Debian** mínimo (solo consola, sin entorno gráfico), actualizada y con un par de utilidades básicas instaladas. A partir de aquí trabajaremos siempre desde la consola de la propia VM o bien, conectados por SSH desde Windows para mayor comodidad (poder copiar y pegar comandos, tamaño de la ventana, textos, etc.).
 
 # 1. Instalar VirtualBox
 
