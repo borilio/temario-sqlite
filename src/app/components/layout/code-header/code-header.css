@@ -1,9 +1,7 @@
 /**************************************
 Recuerda que este componente está dentro de ContenidoComponent, que tiene la encapsulación deshabilitada,
 por lo que cualquier estilo que se aplique aquí SE VUELVE GLOBAL
-.code-header-shell {
-  background: color-mix(in srgb, var(--p-primary-500) 10%, transparent);
-}Aunque ahora lo hemos "solucionado" por encapsular el estilo del p-tag solo a lo que tenga la clase .code-header-shell
+Aunque ahora lo hemos "solucionado" por encapsular el estilo del p-tag solo a lo que tenga la clase .code-header-shell
 ***************************************/
 
 /* Para hacer la etiqueta un poco más pequeña */
