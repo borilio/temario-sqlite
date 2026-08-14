@@ -42,13 +42,13 @@ En VirtualBox, pulsa **Nueva**.
 
 
 
-![Crear máquina virtual - Nombre y sistema operativo](img/01-servidor/image-20260811124312955.png){.rounded-3}
+![Crear máquina virtual - Nombre y sistema operativo](img/01-servidor/image-20260811124312955.png){.rounded}
 
-![Crear máquina virtual - Hardware](img/01-servidor/image-20260811125444111.png){.rounded-3}
+![Crear máquina virtual - Hardware](img/01-servidor/image-20260811125444111.png){.rounded}
 
-![Crear máquina virtual - Disco duro](img/01-servidor/image-20260811125640859.png){.rounded-3}
+![Crear máquina virtual - Disco duro](img/01-servidor/image-20260811125640859.png){.rounded}
 
-![Máquina virtual terminada](img/01-servidor/image-20260811130727227.png)
+![Máquina virtual terminada](img/01-servidor/image-20260811130727227.png){.rounded}
 
 > [!WARNING] 
 >
@@ -68,13 +68,13 @@ Con la máquina virtual ya creada (pero todavía apagada), vamos a montar la ISO
 6. Navega hasta donde descargaste la ISO de Debian y selecciónala.
 7. Verás que ahora, en el panel central, el icono de disco óptico ya no pone "Vacío", sino el nombre del archivo `.iso` que acabas de seleccionar — señal de que está montada correctamente.
 
-![Configuración - Almacenamiento - Unidad Óptica](img/01-servidor/image-20260811133542460.png){.rounded-3}
+![Configuración - Almacenamiento - Unidad Óptica](img/01-servidor/image-20260811133542460.png){.rounded}
 
 ## Red
 
 **Red** → modo **Adaptador puente**. Así la VM obtiene su propia IP dentro de la red local (por ejemplo, `192.168.1.185`), y podéis acceder a ella desde el navegador o el terminal de Windows como si fuera un equipo aparte — algo importante para entender que el servidor no está "dentro" de Windows, sino en una máquina distinta.
 
-![Configuración - Red](img/01-servidor/image-20260811140305754.png){.rounded-3}
+![Configuración - Red](img/01-servidor/image-20260811140305754.png){.rounded}
 
 Y pulsamos <kbd>Aceptar</kbd> para terminar con la configuración de la máquina virtual.
 
@@ -87,13 +87,13 @@ Vamos a instalar Debian usando el instalador gráfico (**Graphical install**), q
 
 ## 🔌 Arrancar
 
-Al arrancar la VM por primera vez, verás el menú de arranque de Debian. Selecciona **Graphical install** con las flechas del teclado y pulsa **Intro**.
+Al arrancar la VM por primera vez, verás el menú de arranque de Debian. Selecciona <kbd>Graphical install</kbd> con las flechas del teclado y pulsa <kbd>Intro</kbd>.
 
 ![Instalación Debian](img/01-servidor/image-20260811141102911.png){.rounded-3}
 
 > [!tip]
 >
-> Para “entrar” en la VM basta con hacer clic en su ventana. Si tienes problemas para “salir” de ella, pulsa la tecla <kbd>Control</kbd> derecha.
+> Para “entrar” en la VM basta con hacer clic en su ventana. Si tienes problemas para “salir” de ella, pulsa la tecla <kbd>Control</kbd> derecha (no control + derecha, si no, de las dos teclas control que tiene el teclado, la que está en la derecha 😅).
 
 
 
@@ -124,7 +124,7 @@ Aquí el instalador te pedirá primero la contraseña de root y después los dat
   >
   > Usa credenciales simples, ya que tendrás que escribirlas muchas veces. En un servidor real si que usaríamos más seguras.
 
-![Instalador Debian - Usuarios (easter egg: contraseñas no coinciden en la captura)](img/01-servidor/image-20260811145405423.png){.rounded-3}
+![Instalador Debian - Usuarios (easter egg: contraseñas no coinciden en la captura)](img/01-servidor/image-20260811145405423.png){.rounded}
 
 > [!important]
 > Al desactivar root, Debian instala automáticamente el paquete `sudo` y añade tu usuario al grupo `sudo`. Esto **no significa que tu usuario se convierta en superusuario permanente** — solo te permite ejecutar comandos puntuales con privilegios elevados anteponiendo `sudo` (por ejemplo, `sudo apt update`), que es la forma recomendada de administrar el sistema. Te ahorra tener que instalar y configurar `sudo` a mano más adelante.
@@ -136,13 +136,13 @@ Aquí el instalador te pedirá primero la contraseña de root y después los dat
 - El instalador te pedirá confirmación para crear la tabla de particiones. Como es un disco virtual nuevo sin nada que perder, selecciona **"Sí"**.
 - Confirma los cambios cuando el instalador te muestre el resumen — esto formateará el disco virtual (recuerda que es un disco virtual de la VM, no toca tu disco real de Windows).
 
-![Instalador Debian - Particionado](img/01-servidor/image-20260811150425571.png){.rounded-3}
+![Instalador Debian - Particionado](img/01-servidor/image-20260811150425571.png){.rounded}
 
 ## 📦 Instalación
 
 Ahora se procederá a instalar los paquetes necesarios. 
 
-![Instalador Debian - Instando el sistema base](img/01-servidor/image-20260811150714008.png)
+![Instalador Debian - Instando el sistema base](img/01-servidor/image-20260811150714008.png){.rounded}
 
 Cuando termine el proceso de instalación, el asistente te hará un par de preguntas adicionales:
 
@@ -153,9 +153,9 @@ Cuando termine el proceso de instalación, el asistente te hará un par de pregu
 
 ## 💾 Software adicional
 
-![Instalador Debian - Selección de programas](img/01-servidor/image-20260811152625312.png){.rounded-3}
+![Instalador Debian - Selección de programas](img/01-servidor/image-20260811152625312.png){.rounded}
 
-En la pantalla de selección de software (**tasksel**), verás una lista de casillas marcadas por defecto. Aquí es donde nos aseguramos de que el sistema final se queda sin entorno gráfico, y aprovechamos para dejar el SSH ya instalado desde el principio:
+En la pantalla de selección de programas, verás una lista de casillas marcadas por defecto. Aquí es donde nos aseguramos de que el sistema final se queda sin entorno gráfico, y aprovechamos para dejar el SSH ya instalado desde el principio:
 
 - ❌ Desmarca **Entorno de escritorio Debian / Debian desktop environment** y cualquier entorno gráfico (GNOME, Xfce, KDE, etc.).
 - ✅ Deja marcado **SSH server** — así lo tienes instalado y arrancado desde el principio.
@@ -164,7 +164,7 @@ En la pantalla de selección de software (**tasksel**), verás una lista de casi
 
 Termina la instalación y reinicia cuando el instalador te lo pida.
 
-![Instalador Debian - Terminado](img/01-servidor/image-20260811153241803.png){.rounded-3}
+![Instalador Debian - Terminado](img/01-servidor/image-20260811153241803.png){.rounded}
 
 Deberías llegar a una pantalla de login en modo texto — señal de que todo ha ido bien.
 
@@ -176,7 +176,15 @@ Al escribir nuestras credenciales, `usuario` y `contraseña` deberíamos entrar 
 
 ## 📸 Snapshot 1
 
-Antes de tocar nada más, apaga la VM, y crea una primera instantánea en VirtualBox (`Máquina → Herramientas → Instantáneas → Tomar`) llamada algo como `debian-base-sin-tocar`. Sirve como punto de partida limpio si algo se rompe más adelante.
+Antes de tocar nada más, apaga la VM con el siguiente comando:
+
+```bash
+sudo poweroff
+```
+
+Este comando apaga el sistema de forma ordenada, cerrando todos los procesos y servicios correctamente antes de detener la VM.
+
+Y crea una primera instantánea en VirtualBox (`Máquina → Herramientas → Instantáneas → Tomar`) llamada algo como `debian-base-sin-tocar`. Sirve como punto de partida limpio si algo se rompe más adelante.
 
 # 6. Actualizar el sistema
 
@@ -187,7 +195,7 @@ sudo apt update && sudo apt upgrade
 ```
 
 - `apt update` → actualiza el índice de paquetes disponibles en los repositorios, **pero no instala nada**.
-- `apt upgrade` → instala las actualizaciones disponible (las que detectó `sudo apt update`). Te mostrará un resumen y te pedirá confirmación (pulsa <kbd>s</kbd> + <kbd>Intro</kbd>).
+- `apt upgrade` → instala las actualizaciones disponible (las que detectó `sudo apt update`). Te mostrará un resumen y te pedirá confirmación (pulsa <kbd>s</kbd> y después <kbd>Intro</kbd>).
 - Al poner los dos comandos seguidos con el operador `&&`, primero ejecuta uno, y si todo va bien, se ejecuta el segundo. Se pueden hacer por separado o todo junto, como en el ejemplo.
 
 > [!warning]
@@ -233,9 +241,9 @@ Ya instalaste el servidor SSH durante la instalación de Debian, así que solo v
 sudo systemctl status ssh
 ```
 
-Deberías ver una línea con `active (running)` en verde. Si es así, el servidor SSH ya está escuchando conexiones. Pulsa `q` para salir de esta pantalla de estado.
+Deberías ver una línea con `active (running)` en verde. Si es así, el servidor SSH ya está escuchando conexiones. Pulsa <kbd>q</kbd> para salir de esta pantalla de estado.
 
-![Comprobar estado de SSH](img/01-servidor/image-20260812124523648.png){.rounded-3}
+![Comprobar estado de SSH](img/01-servidor/image-20260812124523648.png){.img-preview}
 
 ## Averiguar la IP de la VM
 
@@ -286,17 +294,12 @@ Si todo va bien, verás el mismo prompt de la consola de la VM, pero ahora desde
 
 Con Debian instalado, actualizado y con las utilidades básicas ya instaladas, este es un buen momento para hacer una instantánea de la VM. Así tienes un punto de partida limpio y estable desde el que arrancar el siguiente punto del temario (instalación de PocketBase), sin tener que repetir todo este proceso por si algo se tuerce.
 
-1. Apaga la VM desde la consola (directa o por SSH):
-
-```bash
-   sudo poweroff
-```
-
-   Este comando apaga el sistema de forma ordenada, cerrando todos los procesos y servicios correctamente antes de detener la VM.
-
-2. En VirtualBox, selecciona la VM (debería aparecer como "Apagada") y ve a **Máquina → Herramientas → Instantáneas**.
-3. Pulsa **Tomar** y ponle un nombre descriptivo, por ejemplo `debian-listo-para-pocketbase`.
-4. Añade una breve descripción si quieres recordar más adelante qué incluye exactamente (Debian actualizado, git, curl, unzip, htop, vim, net-tools, tree, SSH configurado).
+1. Apaga la VM desde la consola (directa o por SSH). Recuerda, `sudo poweroff`. 
+1. En VirtualBox, selecciona la VM (debería aparecer como "Apagada") y ve a **Máquina → Herramientas → Instantáneas**.
+1. Pulsa **Tomar** y ponle un nombre descriptivo, por ejemplo `debian-listo-para-pocketbase`.
+1. Añade una breve descripción si quieres recordar más adelante qué incluye exactamente (Debian actualizado, git, curl, unzip, htop, vim, net-tools, tree, SSH configurado).
 
 > [!TIP]
 > Puedes volver a este punto en cualquier momento seleccionando la instantánea y pulsando **Restaurar**, por ejemplo si algo se rompe durante la instalación de PocketBase o cuando queramos “desinstalar Pocket Base” (es más fácil restaurar este punto que deshacer todo lo que hagamos en el siguiente).
+
+![Captura de virtual box mostrando las instantáneas](img/01-servidor/image-20260814143038385.png){.rounded}

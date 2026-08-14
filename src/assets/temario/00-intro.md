@@ -1,20 +1,18 @@
 [TOC]
 
-# Introducción
-
 ![image-20260811114039877](img/00-intro/image-20260811114039877.png){.rounded-3}
 
-## ¿Qué vamos a hacer?
+# ¿Qué vamos a hacer?
 
 Vamos a montar nuestro propio servidor de desarrollo desde cero. Nada de magia ni de comandos copiados sin entender qué hacen: vamos a instalar una máquina virtual, meterle Linux (Debian, para ser exactos) y dejarla lista para trabajar como si fuera un servidor de verdad.
 
 Spoiler: no hace falta ser un experto en Linux para esto. Vamos a ver lo justo y necesario para no perdernos, ni más ni menos.
 
-## ¿Por qué un servidor de desarrollo?
+# ¿Por qué un servidor de desarrollo?
 
-Seguro que te suena esto: empiezas un curso, no tienes ni idea de qué es un backend, un frontend o una API, y poco a poco vas montando cosas... todas en tu propio ordenador, todas en `localhost`. La base de datos en tu PC, la API en tu PC, el frontend en tu PC. Todo en el mismo sitio, todo muy cómodo.
+Seguro que te suena esto: empiezas un curso, no tienes ni idea de qué es un backend, un frontend o una API, y poco a poco vas montando cosas... todas en tu propio ordenador, todas en `localhost`. La base de datos en tu PC, la API en tu PC, el frontend en tu PC. **Todo en el mismo sitio, todo muy cómodo.**
 
-El problema es que eso no es *para nada* como funciona una aplicación de verdad. En un proyecto real, cada pieza suele vivir en su propio rincón: un servidor para la base de datos, otro para la API, otro para el frontend... y todos hablando entre sí a través de la red, no compartiendo carpeta como buenos vecinos.
+**El problema es que eso no es *para nada* como funciona una aplicación de verdad**. En un proyecto real, cada pieza suele vivir en su propio rincón: un servidor para la base de datos, otro para la API, otro para el frontend... y todos hablando entre sí a través de la red, no compartiendo carpeta como buenos vecinos.
 
 Así que vamos a hacer algo distinto: crear un **servidor de desarrollo** separado de tu Windows (o el sistema que uses), donde iremos instalando las herramientas que necesitemos. La idea es:
 
@@ -26,7 +24,7 @@ Así que vamos a hacer algo distinto: crear un **servidor de desarrollo** separa
 
 
 
-## ¿Qué vamos a montar?
+# ¿Qué vamos a montar?
 
 Primero, la base: una máquina virtual con **Debian** en **VirtualBox**, que será nuestro servidor de desarrollo particular.
 
@@ -35,15 +33,15 @@ Sobre esa base instalaremos **PocketBase**, una herramienta que nos da de un plu
 > [!NOTE]
 > Una vez que PocketBase esté funcionando y lo hayamos entendido, daremos un paso más: instalarlo también usando **Docker**. Es un contenido algo más avanzado, así que si el curso va justo de tiempo o el ritmo es más tranquilo, se puede dejar aquí perfectamente. Lo importante ya se habrá visto.
 
-## Requisitos previos
+# Requisitos previos
 
-### Técnicos
+## Técnicos
 
 - 💻 Un ordenador con al menos 4 GB de RAM libres y espacio en disco disponible (recomendado 20 GB o más).
 - 📦 [VirtualBox](https://www.virtualbox.org/) instalado.
 - 🙌 Ganas de trastear, no hace falta saber Linux de antemano.
 
-### Conocimientos
+## Conocimientos
 
 Si ya te manejas con MySQL a nivel medio (sabes crear una base de datos, tablas, relaciones entre ellas, y usar `INSERT`, `SELECT`, `UPDATE` y `DELETE`), vas sobrado para este bloque. De hecho, te vas a encontrar con menos SQL del que esperas, no con más.
 
@@ -60,7 +58,7 @@ Algunas diferencias que te vas a encontrar respecto a MySQL:
 > [!TIP]
 > Si en algún momento necesitas hacer algo muy concreto que no se pueda desde el panel, PocketBase también permite lanzar consultas SQL directamente. Pero para lo básico de este curso, no nos hará falta.
 
-## ¿Qué ganamos con esta solución?
+# ¿Qué ganamos con esta solución?
 
 Frente a un backend tradicional (con su servidor de aplicaciones, su motor de base de datos aparte, su capa de autenticación a programar a mano...), esta combinación de servidor de desarrollo + herramienta todo-en-uno tiene varias ventajas para aprender y para prototipar rápido:
 
