@@ -21,7 +21,7 @@
         {
           "id": "intro",
           "orden": 1,
-          "titulo": "Introducción",
+          "titulo": "00 - Introducción",
           "descripcion": "Pequeña introducción del curso donde se ven los objetivos del mismo",
           "archivoMd": "00-intro.md",
           "img": "",
@@ -34,9 +34,22 @@
         {
           "id": "servidor",
           "orden": 2,
-          "titulo": "Servidor de desarrollo",
+          "titulo": "01 - Servidor de desarrollo",
           "descripcion": "Crearemos un servidor de desarrollo en Debian usando Virtual Box, con el objetivo de dejarlo preparado para instalar Pocket Base",
           "archivoMd": "01-servidor.md",
+          "img": "",
+          "emoji": "",
+          "icon": "pi pi-angle-right",
+          "severity": "success",
+          "outlined": false,
+          "habilitado": true
+        },
+        {
+          "id": "pocketbase",
+          "orden": 3,
+          "titulo": "02 - PocketBase",
+          "descripcion": "Instalación de PocketBase en el servidor de desarrollo y primera ejecución",
+          "archivoMd": "02-pocketbase.md",
           "img": "",
           "emoji": "",
           "icon": "pi pi-angle-right",

@@ -1,6 +1,6 @@
 {
-    "preset": "MiPresetNoir",
-    "defaultThemeId": "github-dark",
+    "preset": "MiPresetBlue",
+    "defaultThemeId": "hud",
     "mostrarLigadurasFuentes": true,
     "devMode": true,
     "data": {
