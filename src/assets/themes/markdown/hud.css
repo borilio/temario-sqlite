@@ -7,17 +7,15 @@
 }
 
 .markdown-body {
-  --bg:#050a12; --fg:#c3e7fb; --muted:#93bad2; --line:rgba(64,208,255,.30);
+  --bg:rgba(7, 18, 28, 0.82); --fg:#c3e7fb; --muted:#93bad2; --line:rgba(64,208,255,.30);
   --cian:#3fd0ff; --cian-int:#8ee7ff; --oro:#ffc046; --panel:rgba(20,45,66,.45);
   --color-note:#3fd0ff;
   --color-important:#8b5cf6;
   --color-warning:#f59e0b;
   --color-tip:#34d399;
   --color-caution:#f87171;
-  position: relative;
-  isolation: isolate;
   margin: 0;
-  background: var(--bg);
+  background: transparent;
   color: var(--fg);
   font: 16px/1.75 "Bahnschrift", "Segoe UI", system-ui, sans-serif;
   font-variation-settings: "wght" 400, "wdth" 100;
@@ -27,21 +25,8 @@
   box-sizing: border-box;
 }
 
-.markdown-body::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image:
-    repeating-linear-gradient(0deg, rgba(64,208,255,.045) 0 1px, transparent 1px 44px),
-    repeating-linear-gradient(90deg, rgba(64,208,255,.045) 0 1px, transparent 1px 44px),
-    radial-gradient(ellipse at 50% 40%, transparent 45%, rgba(0,0,0,.75) 100%);
-}
-
 .markdown-body > * {
-  position: relative;
-  z-index: 1;
+  position: static;
 }
 
 .markdown-body * { box-sizing: border-box; }
