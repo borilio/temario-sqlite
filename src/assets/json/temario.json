@@ -1,7 +1,7 @@
 {
   "tituloGeneral": "",
   "descripcion": "🗄️ En este curso aprenderás a trabajar con SQLite de forma práctica, creando un pequeño servidor de desarrollo sobre Debian.\n\n🖥️ Instalaremos y configuraremos PocketBase para disponer de una base de datos SQLite, autenticación de usuarios y una API REST lista para utilizar desde nuestras aplicaciones.",
-  "img": "img/logo-pocketbase.png",
+  "img": "img/logo-pocketbase.jpg",
   "mostrarBloquesEnMenu": false,
   "bloques": [
     {
@@ -13,7 +13,7 @@
       "img": "",
       "emoji": "🟢",
       "icon": "pi pi-box",
-      "color": "#00600080",
+      "color": "color-mix(in srgb, var(--p-primary-500) 10%, transparent)",
       "expandible": true,
       "contraido": false,
       "habilitado": true,
@@ -27,7 +27,7 @@
           "img": "",
           "emoji": "",
           "icon": "pi pi-angle-right",
-          "severity": "success",
+          "severity": "primary",
           "outlined": false,
           "habilitado": true
         },
@@ -40,7 +40,7 @@
           "img": "",
           "emoji": "",
           "icon": "pi pi-angle-right",
-          "severity": "success",
+          "severity": "primary",
           "outlined": false,
           "habilitado": true
         },
@@ -53,7 +53,7 @@
           "img": "",
           "emoji": "",
           "icon": "pi pi-angle-right",
-          "severity": "success",
+          "severity": "primary",
           "outlined": false,
           "habilitado": true
         }
@@ -99,7 +99,7 @@
       "descripcion": "Las píldoras de información son secciones breves y concisas que complementan la parte troncal del curso. Aquí encontrarás temas específicos y avanzados que no se abordan en profundidad en el temario troncal.",
       "icon": "pi pi-circle-fill",
       "emoji": "💊",
-      "color": "rgba(255, 0, 255, 0.05)", 
+      "color": "color-mix(in srgb, var(--p-primary-100) 10%, transparent)", 
       "img": "",
       "expandible": true,
       "contraido": true,
