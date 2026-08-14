@@ -1,10 +1,18 @@
 /**************************************
 Recuerda que este componente está dentro de ContenidoComponent, que tiene la encapsulación deshabilitada,
 por lo que cualquier estilo que se aplique aquí SE VUELVE GLOBAL
+.code-header-shell {
+  background: color-mix(in srgb, var(--p-primary-500) 10%, transparent);
+}Aunque ahora lo hemos "solucionado" por encapsular el estilo del p-tag solo a lo que tenga la clase .code-header-shell
 ***************************************/
 
 /* Para hacer la etiqueta un poco más pequeña */
-.p-tag.p-tag-sm {
-  font-size: 0.75rem; /* Reduce el tamaño de la fuente */
-  padding: 0.2rem 0.5rem;   /* Ajusta el padding para hacerlo más compacto */
+
+.code-header-shell .p-tag.p-tag-sm {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.5rem;
+}
+
+.code-header-shell {
+  background: color-mix(in srgb, var(--p-primary-500) 10%, transparent);
 }
