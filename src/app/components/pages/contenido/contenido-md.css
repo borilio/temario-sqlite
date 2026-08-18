@@ -108,11 +108,30 @@ Aquí añadiremos estilos para forzar algunos estilos contenido html generado po
 
 /******* ESTILOS DEL TOC (tanto el drawer como en contenido) *******/
 .table-of-contents a {
+  display: inline-block;
   text-decoration: none;
   color: var(--p-primary-color);
+  background: color-mix(in srgb, var(--p-primary-500) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--p-primary-500) 25%, transparent);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  margin: 0.25rem 0.25rem 0.25rem 0;
+  transition: all 0.2s ease-in-out;
+  font-size: 0.9rem;
 }
+
 .table-of-contents a:hover {
-  text-decoration: underline;
+  background: color-mix(in srgb, var(--p-primary-500) 18%, transparent);
+  border-color: color-mix(in srgb, var(--p-primary-500) 50%, transparent);
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table-of-contents a:active {
+  background: color-mix(in srgb, var(--p-primary-500) 25%, transparent);
+  border-color: var(--p-primary-500);
+  transform: translateY(0);
 }
 
 /* Y lo mismo para la indentación */
@@ -122,6 +141,10 @@ Aquí añadiremos estilos para forzar algunos estilos contenido html generado po
 }
 .table-of-contents ul ul {
   padding-left: 1.5rem;
+  margin-top: 0.5rem;
+  margin-left: 0.25rem;
+  border-left: 2px solid color-mix(in srgb, var(--p-primary-500) 35%, transparent);
+  opacity: 0.85;
 }
 
 /* Pero ocultamos el TOC principal, solo vemos el del drawer */

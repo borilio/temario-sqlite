@@ -24,13 +24,22 @@
 
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-
-  border: 1px solid var(--p-primary-500, #fff);
 }
+
 
 .sombra-grande {
   box-shadow:
     0 0 12px rgba(0, 0, 0, 0.45),
     0 4px 10px rgba(0, 0, 0, 0.40),
     0 -4px 10px rgba(0, 0, 0, 0.40);
+}
+
+.borde-cristal {
+  border: 1px solid rgba(255, 255, 255, 0.20);
+
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.35),
+    inset 1px 0 1px rgba(255, 255, 255, 0.20),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.20),
+    inset -1px 0 1px rgba(0, 0, 0, 0.12);
 }
