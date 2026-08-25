@@ -1,0 +1,130 @@
+/* ================================
+   WIDGET - Colores contextuales
+   ================================ */
+
+[data-widget] {
+    --widget-color: var(--p-primary-500);
+}
+
+.widget-primary {
+    --widget-color: var(--p-primary-500);
+}
+
+.widget-info {
+    --widget-color: #0dcaf0;
+}
+
+.widget-success {
+    --widget-color: #198754;
+}
+
+.widget-warning {
+    --widget-color: #ffc107;
+}
+
+.widget-danger {
+    --widget-color: #dc3545;
+}
+
+.widget-light {
+    --widget-color: #f8f9fa;
+}
+
+.widget-dark {
+    --widget-color: #212529;
+}
+
+/* ================================
+   WIDGET - COMMON
+   ================================ */
+
+.widget-bordered {
+    border: 1px solid var(--widget-color);
+    border-radius: 0.375rem;
+    padding: 1rem;
+}
+
+.widget-centered {
+    margin-inline: auto;
+    width: fit-content;
+}
+
+
+/* ================================
+   WIDGET - STEPPER
+   ================================ */
+
+[data-widget="stepper"] {
+    margin-block: 2rem;
+}
+
+[data-widget="stepper"] ol {
+    counter-reset: widget-step;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+[data-widget="stepper"] li {
+    counter-increment: widget-step;
+
+    position: relative;
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    column-gap: 1rem;
+    padding-bottom: 2rem;
+}
+
+[data-widget="stepper"] li:not(:last-child)::after {
+    content: "";
+
+    position: absolute;
+    left: 1rem;
+    top: 2rem;
+    bottom: 0;
+
+    width: 2px;
+
+    background-color: var(--widget-color);
+    opacity: 0.25;
+}
+
+[data-widget="stepper"] li::before {
+    content: counter(widget-step);
+
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 2rem;
+    height: 2rem;
+
+    border-radius: 50%;
+
+    background-color: var(--widget-color);
+    color: #fff;
+
+    font-weight: 600;
+}
+
+[data-widget="stepper"] li > div {
+    min-width: 0;
+}
+
+[data-widget="stepper"] li strong {
+    display: block;
+    padding-top: 0.35rem;
+}
+
+[data-widget="stepper"] li p {
+    margin: 0.4rem 0 0;
+}
+
+[data-widget="stepper"] img {
+    display: block;
+    margin-left: 0;
+    margin-right: auto;
+}

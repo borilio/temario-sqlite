@@ -20,7 +20,8 @@ import { Tema } from '../../../models/temario.model';
   templateUrl: './contenido.html',
   styleUrls: [
     './contenido.css',     // estilos del componente
-    './contenido-md.css'   // estilos sobrescritos para el markdown
+    './contenido-md.css',  // estilos sobrescritos para el markdown
+    './widgets.css'        // estilos de los widgets
   ],
   encapsulation: ViewEncapsulation.None //Es para aplicar los estilos de forma "global", no me gusta, pero parece que no había otra forma
 })
