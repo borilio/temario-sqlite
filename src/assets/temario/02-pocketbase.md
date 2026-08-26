@@ -144,6 +144,14 @@ Descomprime el `.zip` directamente dentro de `apps/demo`:
 unzip pocketbase_*.zip -d apps/demo
 ```
 
+> [!warning]
+>
+> **Usa este comando si solo tienes un único archivo `.zip` en la carpeta**. Si tuvieras más, deberías escribir el nombre completo y no usar `*.zip`, ya que así descomprimiríamos TODOS los archivos zip que comiencen por `pocketbase_`.
+
+> [!tip]
+>
+> Puedes terminar automáticamente el nombre de los archivos y carpetas en el bash de linux escribiendo las primeras letras del archivo y después pulsando la tecla <kbd>TAB</kbd>.
+
 Esto extrae el binario `pocketbase` (y algún archivo más, como la licencia) dentro de `apps/demo/`.
 
 Por último, dale permisos de ejecución al binario:
@@ -159,21 +167,227 @@ Por último, sal a `/opt` y comprueba que la estructura ha quedado como esperaba
 
 ```bash
 cd /opt
-tree pocketbase
+tree
 ```
 
 Deberías ver algo parecido a esto:
 
 ```texto
-pocketbase
-├── apps
-│   └── demo
-│       ├── LICENSE.md
-│       └── pocketbase
-└── pocketbase_0.39.11_linux_amd64.zip
+.
+└── pocketbase
+    ├── apps
+    │   └── demo
+    │       ├── CHANGELOG.md
+    │       ├── LICENSE.md
+    │       └── pocketbase
+    └── pocketbase_0.39.11_linux_amd64.zip
 ```
 
 > [!CAUTION]
 > Recuerda que ahora estás situado en `/opt`, no en `/opt/pocketbase`. Si vas a seguir con más comandos relativos a la carpeta de PocketBase, haz primero `cd pocketbase` para volver a entrar.
 
-{{ En el siguiente bloque nos queda arrancarlo y echarle un vistazo al panel. Para arrancarlo, la primera instrucción será situarnos en la carpeta de la app que queramos arrancar, en nuestro caso apps/demo}}
+# Primer arranque
+
+## Arrancar PocketBase
+
+Vamos por fin, a arrancar la instancia que hemos preparado de PocketBase en la carpeta `/opt/pocketbase/apps/demo`.
+
+Sitúate (si no lo estás ya) en la carpeta de esta primera aplicación, usando la ruta absoluta para asegurarte de que estás en el sitio correcto:
+
+```bash
+cd /opt/pocketbase/apps/demo
+```
+
+Arranca PocketBase con:
+
+```bash
+./pocketbase serve --http=0.0.0.0:8090
+```
+
+> [!CAUTION]
+> Si en algún momento vieras el comando `./pocketbase serve` a secas (por ejemplo en la documentación oficial o en otros tutoriales), es la forma más simple de arrancarlo, pero solo sirve para trabajar en local, dentro de la misma máquina donde corre PocketBase. 
+>
+> Por defecto solo escucha `127.0.0.1:8090` que es `localhost`, y con el modificador `--http=0.0.0.0:8090` le decimos que escuche desde cualquier interfaz de red, ya que queremos acceder desde Windows, un equipo distinto a la VM.
+
+Deberías ver algo como esto en la consola, indicando que el servidor está arrancado y escuchando:
+
+![Captura de pantalla de pocketbase arrancando por primera vez](img/02-pocketbase/image-20260826110146422.png){.rounded}
+
+> [!TIP]
+> El servidor se queda "enganchado" a esta terminal, mostrando los logs en tiempo real. Para pararlo, pulsa <kbd>Ctrl + C</kbd>. Si necesitas hacer algo en Debian mientras ejecutas PocketBase, puedes o bien hacerlo directamente en la VM o abrir otra pestaña con SSH.
+>
+> Más adelante veremos cómo dejarlo arrancado en segundo plano de forma permanente.
+
+
+
+## Crear el primer usuario administrador
+
+> [!tip] Recuerda
+>
+> Necesitarás conocer la IP de la VM de aquí en adelante. Recuerda que puedes saber cual es escribiendo el siguiente comando en la consola de Debian (tanto en la VM como por SSH):
+>
+> ```bash
+> hostname -I
+> ```
+
+Al arrancar PocketBase en el paso anterior, fíjate en la consola: entre los logs verás un mensaje como este, con un enlace especial de un solo uso para crear tu primer superusuario:
+
+```texto
+(!) Launch the URL below in the browser if it hasn't been open already to create your first superuser account:
+http://0.0.0.0:8090/_/#/pbinstall/TOKEN_LARGO_AQUI
+
+(you can also create your first superuser by running: ./pocketbase superuser upsert EMAIL PASS)
+```
+
+Copia esa URL, pero cambia `0.0.0.0` por la IP de tu VM (la misma que usas para conectarte por SSH), y pégala en el navegador de Windows. Por ejemplo:
+
+```http
+http://IP_DE_LA_VM:8090/_/#/pbinstall/TOKEN_LARGO_AQUI
+```
+
+> [!WARNING]
+> `0.0.0.0` no es una dirección real a la que puedas conectarte desde fuera, es solo la forma en que PocketBase indica "escucho en todas las interfaces". Por eso hay que sustituirla por la IP real de la VM al abrir el enlace desde Windows.
+
+Se abrirá un formulario para crear tu primer usuario administrador (también llamado *superuser*). Rellena:
+
+- **Email**: puede ser cualquiera, no hace falta que sea real ni que exista (por ejemplo, `admin@demo.com`).
+- **Contraseña**: mínimo 8 caracteres. Usa algo simple, ya que la escribirás muchas veces a lo largo del curso.
+
+![Captura de creación de superusuario en pocketbase](img/02-pocketbase/image-20260826114955566.png){.rounded}
+
+Pulsa <kbd>Create superuser and login</kbd> para confirmar.
+
+> [!important]
+> Este usuario administrador no tiene nada que ver con el usuario de Debian que creaste al instalar el sistema, ni con los usuarios que en el futuro pueda registrar tu aplicación (por ejemplo, los usuarios de una app hecha con Angular). Es una cuenta propia de PocketBase, exclusiva para gestionar el panel de administración para esta aplicación `Demo`.
+
+> [!note]
+> También existe una alternativa por comando, sin pasar por el navegador: `./pocketbase superuser upsert EMAIL PASS` (ejecutado en la propia VM). Es útil para crear el usuario de forma más rápida o automatizada, pero para este primer arranque usaremos el enlace del navegador, ya que además te deja directamente dentro del panel.
+
+Tras crear el usuario, entrarás automáticamente en el panel de administración.
+
+![Panel de administración de PocketBase](img/02-pocketbase/image-20260826120005451.png){.rounded}
+
+> [!NOTE]
+> A partir de ahora, para volver a entrar al panel en cualquier otro momento, no necesitas el enlace especial de un solo uso: simplemente abre `http://IP_DE_LA_VM:8090/_/` en el navegador e inicia sesión con el email y la contraseña que acabas de crear.
+
+# Primer vistazo
+
+Con el usuario administrador ya creado, vamos a explorar un poco el panel, sin crear ni modificar nada todavía. La idea es que te vayas familiarizando con dónde está cada cosa antes de empezar a trabajar con ello en los próximos puntos del temario.
+
+## Colecciones (Collections)
+
+En PocketBase, una **colección** es el equivalente a una tabla en una base de datos tradicional: define qué campos tiene cada registro (texto, número, fecha, relación con otra colección, etc.) y cómo se guardan. Por debajo, cada colección se traduce en una tabla real dentro del archivo SQLite, pero tú no necesitas tocar SQL directamente: todo se gestiona desde el panel.
+
+![Captura de la sección completa de Collections](img/02-pocketbase/image-20260826123122050.png){.rounded}
+
+Si entras en la sección **Collections** del menú lateral, verás que ya existen algunas colecciones creadas por defecto, aunque tú no hayas creado ninguna todavía:
+
+- 🙍 **`users`**: pensada para los usuarios de tu futura aplicación (por ejemplo, quien se registre desde tu app de Angular). Trae de serie campos como email y contraseña, y funcionalidades de autenticación ya preparadas.
+- 🦸‍♂️ **`_superusers`**: es la colección donde vive tu propio usuario administrador, el que acabas de crear. Es una colección especial, separada de `users`, precisamente para no mezclar "quien administra PocketBase" con "quien usa tu aplicación".
+- 📁 **Todas las demás:** Son colecciones internas de soporte, que PocketBase usa por debajo para gestionar aspectos avanzados de autenticación (inicio de sesión externo, verificación en dos pasos, etc.), y que tampoco vamos a tocar por ahora.
+
+Por ahora no vamos a crear ninguna colección nueva ni a tocar estas, simplemente échales un vistazo por encima. En un punto posterior del temario veremos cómo crear nuestras propias colecciones y qué papel juegan la autenticación y las reglas de seguridad (quién puede leer, crear o modificar cada registro).
+
+> [!TIP] Curiosidad
+> 🤓 Si te fijas en los campos de la colección `users`, no verás ninguno llamado `password` o similar. Esto no es un error: **PocketBase gestiona la autenticación de forma interna** y nunca guarda ni muestra las contraseñas en texto plano, ni siquiera a ti como administrador. Se encarga automáticamente de aplicar hash (cifrado de un solo sentido) a cada contraseña antes de guardarla, de validar el login, de generar tokens de sesión, etc. Es todo ese trabajo de seguridad que, si tuvieras que montar tu propio backend desde cero, **tendrías que programar tú mismo con mucho cuidado** para no dejar huecos de seguridad.
+
+## Configuración (Settings)
+
+En el menú lateral, la sección **Settings** reúne los ajustes generales de esta aplicación PocketBase. No vamos a entrar en detalle en ningún apartado todavía, solo un vistazo rápido para que sepas que existe y para qué sirve a grandes rasgos:
+
+- ⚙️ **Application**: datos generales de tu aplicación, como el nombre, la URL, y el color de acento (*accent color*) del panel. Este último es especialmente útil si en el futuro trabajáis con varias instancias de PocketBase a la vez (por ejemplo, `demo` y otra app distinta): cambiando el color de cada una, es mucho más fácil distinguir de un vistazo en qué panel estás en cada momento.
+- ✉️ **Mail settings**: define cómo va a enviar PocketBase los correos automáticos (verificación de email, recuperación de contraseña, etc.). Por defecto no está configurado ningún servidor de correo real, así que estos emails no se envían todavía; volveremos a esta pantalla más adelante cuando lo configuremos.
+- 🗂️ **Files storage**: controla dónde se guardan los archivos que suba tu aplicación (imágenes, documentos, etc.), ya sea en el propio disco del servidor o en un servicio externo tipo S3. Lo veremos con detalle cuando trabajemos con campos de tipo archivo.
+- 📦 **Backups**: permite generar y programar copias de seguridad de tu aplicación directamente desde el panel. Lo retomaremos más adelante, cuando hablemos de mantenimiento y backups.
+- ⏰ **Crons**: muestra las tareas programadas internas de PocketBase (por ejemplo, limpieza automática de archivos temporales o registros caducados). No es algo que necesites tocar por ahora, pero está bien saber que existe.
+
+> [!NOTE]
+> Al igual que pasaba con las colecciones, todo lo que ves aquí es propio y exclusivo de esta instancia (`demo`). Si en el futuro creas una segunda aplicación con PocketBase, tendrá su propia configuración completamente independiente de esta.
+
+
+
+![Captura de pantalla de configuración](img/02-pocketbase/image-20260826125002927.png){.rounded}
+
+# Bajo el capó (opcional)
+
+La idea es entender, por encima, qué ha creado PocketBase automáticamente en el disco al arrancar por primera vez.
+
+Primero, para el servidor con <kbd>Ctrl</kbd> + <kbd>C</kbd> en la terminal donde lo tienes corriendo. Después, sitúate en la carpeta de la aplicación y echa un vistazo:
+
+```bash
+cd /opt/pocketbase/apps/demo
+tree
+```
+
+Deberías ver algo parecido a esto:
+
+```
+.
+├── CHANGELOG.md
+├── LICENSE.md
+├── pb_data
+│   ├── auxiliary.db
+│   ├── backups
+│   ├── data.db
+│   └── types.d.ts
+└── pocketbase
+```
+
+> [!NOTE]
+> Si al hacer esto ves también archivos con extensión `-shm` o `-wal` (por ejemplo, `data.db-wal`), es porque el servidor sigue corriendo. Son archivos temporales que SQLite usa internamente mientras la base de datos está en uso, y desaparecen (se integran en el archivo principal) cuando paras PocketBase.
+
+- **`pocketbase`**: el binario que ya conocías, el programa en sí.
+- **`pb_data/`**: esta carpeta la ha creado PocketBase automáticamente al arrancar por primera vez. Aquí es donde vive **todo** lo importante de tu aplicación: usuarios, colecciones, configuración y archivos subidos.
+  - **`data.db`**: el archivo SQLite principal, donde están tus colecciones y registros (lo que antes comentábamos que es el equivalente a las "tablas" de una base de datos tradicional).
+  - **`auxiliary.db`**: otro archivo SQLite, para datos internos de PocketBase (logs, configuración interna) separados de tus propios datos.
+  - **`backups/`**: carpeta donde se guardarán las copias de seguridad si en algún momento generas alguna desde la sección de Settings que vimos antes. Por ahora está vacía.
+
+> [!TIP]
+> Esta carpeta `pb_data` es la que de verdad importa a la hora de hacer copias de seguridad o mover la aplicación a otro servidor: si copias `pb_data`, te llevas absolutamente todos tus datos. El binario `pocketbase` es reemplazable (puedes descargar otra copia en cualquier momento), pero `pb_data` no tiene sustituto.
+
+La idea es entender, por encima, qué ha creado PocketBase automáticamente en el disco al arrancar por primera vez.
+
+Desde la consola, sitúate en la carpeta de la aplicación y echa un vistazo:
+
+```bash
+cd /opt/pocketbase/apps/demo
+tree
+```
+
+Deberías ver algo parecido a esto:
+
+```
+.
+├── LICENSE.md
+├── pb_data
+│   ├── auxiliary.db
+│   ├── data.db
+│   └── storage
+└── pocketbase
+```
+
+- **`pocketbase`**: el binario que ya conocías, el programa en sí.
+- **`pb_data/`**: esta carpeta la ha creado PocketBase automáticamente al arrancar por primera vez. Aquí es donde vive **todo** lo importante de tu aplicación: usuarios, colecciones, configuración y archivos subidos.
+  - **`data.db`**: el archivo SQLite principal, donde están tus colecciones y registros (lo que antes comentábamos que es el equivalente a las "tablas" de una base de datos tradicional).
+  - **`auxiliary.db`**: otro archivo SQLite, para datos internos de PocketBase (logs, configuración interna) separados de tus propios datos.
+  - **`storage/`**: aquí se guardan los archivos que suban los usuarios (imágenes, PDFs, etc.), cuando trabajéis con campos de tipo archivo.
+
+> [!TIP]
+> Esta carpeta `pb_data` es la que de verdad importa a la hora de hacer copias de seguridad o mover la aplicación a otro servidor: si copias `pb_data`, te llevas absolutamente todos tus datos. El binario `pocketbase` es reemplazable (puedes descargar otra copia en cualquier momento), pero `pb_data` no tiene sustituto.
+
+# Resumen rápido
+
+Para volver a arrancar PocketBase en cualquier otro momento (por ejemplo, si reinicias la VM):
+
+```bash
+cd /opt/pocketbase/apps/demo
+./pocketbase serve --http=0.0.0.0:8090
+```
+
+Y para acceder al panel desde el navegador de Windows:
+
+```http
+http://IP_DE_LA_VM:8090/_/
+```
+
+(inicia sesión con el email y la contraseña del administrador que creaste)

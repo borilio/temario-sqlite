@@ -8,9 +8,12 @@
 
 ## 1. Encabezados
 
-# Título principal
-## Subtítulo
-### Tercer nivel
+# Encabezado h1
+## Encabezado h2
+### Encabezado h3
+#### Encabezado h4
+##### Encabezado h5
+###### Encabezado h6
 
 ---
 
@@ -212,3 +215,38 @@ He dejado solo los bloques divs, para comprobar como se renderiza un divs con cs
 🟣 <span style="font-weight: bold; color: #5b2a86;">Morado:</span> Este es un bloque de tipo `purple`. Puedes usarlo para lo que necesites.
 </div>
 ```
+
+## 🆕 12. Widgets
+
+Ejemplos de widgets (documentación completa en [temar.io base](https://temario-base.netlify.app/tema/widgets))
+
+### Stepper
+
+<div data-widget="stepper" class="widget-centered widget-bordered">
+    <ol> 
+        <li>
+            <div>
+                <strong>Instalar Debian</strong>
+                <p>Descarga e instala Debian en la máquina virtual.</p>
+            </div>
+        </li>
+        <li>
+            <div>
+                <strong>Configurar SSH</strong>
+                <p>Configura el acceso remoto a la máquina.</p>
+            </div>
+        </li>
+        <li>
+            <div>
+                <strong>Instalar PocketBase</strong>
+                <p>Descarga PocketBase y prepara su directorio de trabajo.</p>
+            </div>
+        </li>
+    </ol>
+</div>
+
+### 🔜 Alerts
+
+### 🔜 Tabs
+
+### 🔜 Details
