@@ -312,7 +312,7 @@ En el menú lateral, la sección **Settings** reúne los ajustes generales de es
 
 La idea es entender, por encima, qué ha creado PocketBase automáticamente en el disco al arrancar por primera vez.
 
-Primero, para el servidor con <kbd>Ctrl</kbd> + <kbd>C</kbd> en la terminal donde lo tienes corriendo. Después, sitúate en la carpeta de la aplicación y echa un vistazo:
+Primero, detén el servidor con <kbd>Ctrl</kbd> + <kbd>C</kbd> en la terminal donde lo tienes corriendo. Después, sitúate en la carpeta de la aplicación y echa un vistazo:
 
 ```bash
 cd /opt/pocketbase/apps/demo
@@ -321,7 +321,7 @@ tree
 
 Deberías ver algo parecido a esto:
 
-```
+```texto
 .
 ├── CHANGELOG.md
 ├── LICENSE.md
@@ -340,54 +340,39 @@ Deberías ver algo parecido a esto:
 - **`pb_data/`**: esta carpeta la ha creado PocketBase automáticamente al arrancar por primera vez. Aquí es donde vive **todo** lo importante de tu aplicación: usuarios, colecciones, configuración y archivos subidos.
   - **`data.db`**: el archivo SQLite principal, donde están tus colecciones y registros (lo que antes comentábamos que es el equivalente a las "tablas" de una base de datos tradicional).
   - **`auxiliary.db`**: otro archivo SQLite, para datos internos de PocketBase (logs, configuración interna) separados de tus propios datos.
-  - **`backups/`**: carpeta donde se guardarán las copias de seguridad si en algún momento generas alguna desde la sección de Settings que vimos antes. Por ahora está vacía.
+  - **`backups/`**: carpeta donde se guardarán las copias de seguridad si en algún momento generas alguna desde la sección de *Settings* que vimos antes. Por ahora está vacía.
 
-> [!TIP]
-> Esta carpeta `pb_data` es la que de verdad importa a la hora de hacer copias de seguridad o mover la aplicación a otro servidor: si copias `pb_data`, te llevas absolutamente todos tus datos. El binario `pocketbase` es reemplazable (puedes descargar otra copia en cualquier momento), pero `pb_data` no tiene sustituto.
-
-La idea es entender, por encima, qué ha creado PocketBase automáticamente en el disco al arrancar por primera vez.
-
-Desde la consola, sitúate en la carpeta de la aplicación y echa un vistazo:
-
-```bash
-cd /opt/pocketbase/apps/demo
-tree
-```
-
-Deberías ver algo parecido a esto:
-
-```
-.
-├── LICENSE.md
-├── pb_data
-│   ├── auxiliary.db
-│   ├── data.db
-│   └── storage
-└── pocketbase
-```
-
-- **`pocketbase`**: el binario que ya conocías, el programa en sí.
-- **`pb_data/`**: esta carpeta la ha creado PocketBase automáticamente al arrancar por primera vez. Aquí es donde vive **todo** lo importante de tu aplicación: usuarios, colecciones, configuración y archivos subidos.
-  - **`data.db`**: el archivo SQLite principal, donde están tus colecciones y registros (lo que antes comentábamos que es el equivalente a las "tablas" de una base de datos tradicional).
-  - **`auxiliary.db`**: otro archivo SQLite, para datos internos de PocketBase (logs, configuración interna) separados de tus propios datos.
-  - **`storage/`**: aquí se guardan los archivos que suban los usuarios (imágenes, PDFs, etc.), cuando trabajéis con campos de tipo archivo.
-
-> [!TIP]
+> [!IMPORTANT]
 > Esta carpeta `pb_data` es la que de verdad importa a la hora de hacer copias de seguridad o mover la aplicación a otro servidor: si copias `pb_data`, te llevas absolutamente todos tus datos. El binario `pocketbase` es reemplazable (puedes descargar otra copia en cualquier momento), pero `pb_data` no tiene sustituto.
 
 # Resumen rápido
 
-Para volver a arrancar PocketBase en cualquier otro momento (por ejemplo, si reinicias la VM):
 
-```bash
-cd /opt/pocketbase/apps/demo
-./pocketbase serve --http=0.0.0.0:8090
-```
 
-Y para acceder al panel desde el navegador de Windows:
+<div data-widget="stepper" class="widget-bordered widget-centered">
+    <ol>
+        <li>
+            <div>
+                <strong>Moverte a la carpeta</strong>
+                <p>Sitúate en la carpeta donde esté la instancia de PocketBase:</p>
+                <code>cd /opt/pocketbase/apps/demo</code>
+            </div>
+        </li>
+        <li>
+            <div>
+                <strong>Arrancar PocketBase</strong>
+               	<p>Arrancamos el servidor escuchando peticiones desde cualquier interfaz:</p>
+                <code>./pocketbase serve --http=0.0.0.0:8090</code>
+            </div>
+        </li>
+        <li>
+            <div>
+                <strong>Instalar PocketBase</strong>
+                <p>Accede al servidor cambiando la IP de la VM en la URL siguiente:</p>
+                <code>http://IP_DE_LA_VM:8090/_/</code>
+                <p>(inicia sesión con el email y la contraseña del administrador que creaste)</p>
+            </div>
+        </li>
+    </ol>
+</div>
 
-```http
-http://IP_DE_LA_VM:8090/_/
-```
-
-(inicia sesión con el email y la contraseña del administrador que creaste)
