@@ -56,6 +56,45 @@
           "severity": "primary",
           "outlined": false,
           "habilitado": true
+        },
+        {
+          "id": "colecciones",
+          "orden": 4,
+          "titulo": "03 - Colecciones ",
+          "descripcion": "Introducción a las colecciones en PocketBase: creación de la colección de libros y primer contacto con la colección de usuarios",
+          "archivoMd": "03-colecciones.md",
+          "img": "",
+          "emoji": "",
+          "icon": "pi pi-angle-right",
+          "severity": "primary",
+          "outlined": false,
+          "habilitado": true
+        },
+        {
+          "id": "relaciones",
+          "orden": 5,
+          "titulo": "04 - Relaciones",
+          "descripcion": "Creación de una colección de préstamos para relacionar usuarios y libros, y verificación de la API REST generada automáticamente",
+          "archivoMd": "04-relaciones.md",
+          "img": "",
+          "emoji": "",
+          "icon": "pi pi-angle-right",
+          "severity": "primary",
+          "outlined": false,
+          "habilitado": true
+        },
+        {
+          "id": "{{nombre}}",
+          "orden": 6,
+          "titulo": "05 - La aplicación real {{falta nombre}}",
+          "descripcion": "Instalación de una nueva instancia de PocketBase y creación de un frontend en Angular que consuma su API como backend.",
+          "archivoMd": "05-{{nombre}}.md",
+          "img": "",
+          "emoji": "",
+          "icon": "pi pi-angle-right",
+          "severity": "primary",
+          "outlined": false,
+          "habilitado": true
         }
               
       ]
