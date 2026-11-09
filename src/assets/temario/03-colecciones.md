@@ -118,7 +118,7 @@ En PocketBase, este tipo de colección se llama **colección de autenticación**
 
 Vamos a añadir un registro de prueba, como si fuera el primer socio de la biblioteca.
 
-Dentro de la colección `users`, busca el botón para crear un nuevo registro <kbd>New record</kbd>.
+Dentro de la colección `users`, busca el botón para crear un nuevo registro <kbd>➕ New record</kbd>.
 
 {{ POR AAQUI, mira si le vas a poner una captura del botón o como está un poco más arriba no le pones nada }}
 
